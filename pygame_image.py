@@ -13,14 +13,15 @@ def main():
     bg_img = pg.transform.flip(bg_img, True, False)#練習８：左右反転した画像surface
     kk_img = pg.image.load("fig/3.png")#練習3：こうかとん画像Surface生成
     kk_img = pg.transform.flip(kk_img, True, False)#練習３：こうかとん画像左右反転
-    kk_rct = kk_img.get_rect()#練習10－1：
-    kk_rct.center = 300, 200#練習10－2：
+    kk_rct = kk_img.get_rect()#練習10－1：こうかとんRectの取得
+    kk_rct.center = 300, 200#練習10－2：こうかとんの初期座標を設定
     tmr = 0
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
         key_lst = pg.key.get_pressed()#練習10－3：キーの押下状態取得
+        
         if key_lst[pg.K_UP]:
             kk_rct.move_ip(0,-1)
         if key_lst[pg.K_DOWN]:
@@ -28,7 +29,9 @@ def main():
         if key_lst[pg.K_LEFT]:
             kk_rct.move_ip(-1, 0)
         if key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip(+1, 0)
+            kk_rct.move_ip(+2, 0)
+
+        kk_rct.move_ip(-1,0)
         
         x = tmr%3200
         screen.blit(bg_img, [-x, 0]) #練習５：背景画像を右から左に
